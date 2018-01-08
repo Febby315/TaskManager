@@ -80,7 +80,7 @@ router.post('/count', function(req, res, next) {
 router.post('/run', function(req,res, next) {
     var json={};
     json['where']=req.body;
-    var jobTable="spider_job"
+    var jobTable="spider_Job"
     client.selectAll(table,json,function(taskResult){
         taskResult.forEach(function (task,index) {
             client.selectAll(jobTable,{where:{taskId:task['id']}},function (jobResult) {
@@ -99,7 +99,7 @@ router.post('/run', function(req,res, next) {
 router.post('/runOne', function(req, res, next) {
     var json={};
     json['where']=req.body;
-    var jobTable="spider_job";
+    var jobTable="spider_Job";
     client.selectAll(table,json,function(taskResult){
         taskResult.forEach(function (task,index) {
             client.selectAll(jobTable,{where:{taskId:task['id']}},function (jobResult) {

@@ -3,7 +3,7 @@ var router = express.Router();
 var UUID = require("uuid");
 var Client = require('../service/service_client');
 var client = new Client();
-var table="spider_task_log";
+var table="spider_Log";
 
 //任务调度执行日志接口API
 //增加日志
