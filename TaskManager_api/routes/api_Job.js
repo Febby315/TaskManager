@@ -1,16 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var UUID = require("uuid");
-var Client = require('../service/service_client');
-var client = new Client();
-var table="spider_Job";
-
-
+const uuid = require("uuid");
+const express = require('express');
+const router = express.Router();
+const Client = require('../service/service_client');
+const client = new Client();
+const table="spider_Job";
 
 //增加
 router.post('/insert', function(req, res, next) {
 	var data=req.body;
-	data.id=UUID.v1();
+	data.id=uuid.v1();
 	client.insert(table,data,function(result){
 		res.send(result);
 	});

@@ -1,4 +1,4 @@
 {
 	"port":8001,
-	"mongodb":"mongodb://127.0.0.1:27017/TaskManager"
+	"mongodb":"mongodb://admin:admin@127.0.0.1:27017/TaskManager?authSource=admin"
 }

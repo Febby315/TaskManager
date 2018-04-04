@@ -3,25 +3,27 @@ var spawn = require('child_process').spawn;
 var command="D:\\Program Files\\nodejs\\npm.cmd";
 var params=["start"];
 
-/*console.log(process.execPath);  //运行环境路径(node.exe路径)
+/*
+console.log(process.execPath);  //运行环境路径(node.exe路径)
 console.log(__dirname); //当前文件路径
-console.log(process.cwd()); //当前进程路径*/
+console.log(process.cwd()); //当前进程路径
+*/
 
 console.log("守护进程已启动\tpid=%s",process.pid);
 function autoRun(){
     var ls = spawn(command,["start"],{cwd:__dirname});
     console.log("主进程已启动\tpid=%s",ls.pid);
-    ls.stdout.on('data',function(data){console.log(data+"");});
-    ls.stderr.on('data',function(data){console.log(data+"");});
+    ls.stdout.on('data',function(data){ console.log(data+"");} );
+    ls.stderr.on('data',function(data){ console.warn(data+"");} );
+    ls.on('error', function(err){
+        console.error("[%s]主进程退出: %s",ls.pid,err);
+    });
     ls.on('close', function(code){
-        console.log("主进程("+ls.pid+")退出"+code,'主进程退出码');
+        console.log("[%s]主进程退出: %s",ls.pid,code);
         autoRun();
     });
     ls.on('exit', function(code,signal){
-        console.log("主进程("+ls.pid+")退出\t"+code+"\t"+signal);
-    });
-    ls.on('error', function(err){
-        console.log("主进程("+ls.pid+")退出\t"+err);
+        console.log("[%s]主进程退出: %s %s",ls.pid,code,signal);
     });
 }
 autoRun();
