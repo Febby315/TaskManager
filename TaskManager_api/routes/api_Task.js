@@ -8,26 +8,26 @@ const router = express.Router();
 const Client = require('../service/service_client');
 const Schedule = require('../service/service_schedule');
 const client = new Client();
-const table='spider_Task';
+const table='spider_task';
 
 //增加
 router.post('/insert', function(req, res, next) {
-    var data=Object.assign({},req.body,{ id:uuid.v1() });
+    var data = Object.assign({},req.body,{ id:uuid.v1() });
     client.insert(table,data,function(result){
         res.send(result);
     });
 });
 //删除
 router.post('/delete', function(req, res, next) {
-    var where=Object.assign({},req.body);
+    var where = Object.assign({},req.body);
     client.delete(table,where,function(result){
         res.send(result);
     });
 });
 //更新
 router.post('/update',function(req, res, next) {
-    var where={ id:req.body.id };
-    var update=req.body;
+    var where = { id:req.body.id };
+    var update = req.body;
     delete update._id,delete update.id;//删除_id,id;
     client.update(table,where,{$set:update},function(result){
         res.send(result);
@@ -35,42 +35,42 @@ router.post('/update',function(req, res, next) {
 });
 //分页查询
 router.all('/selectByPage', function(req, res, next) {
-    var json=Object.assign({ sort:{id:1},page:1,size:10,where:{} },req.body);
+    var json = Object.assign({ sort:{id:1},page:1,size:10,where:{} },req.body);
     client.selectByPage(table,json,function(result){
         Schedule.checkTasks(result,function (tasks) {
-            json['data']=tasks||[];
+            json['data'] = tasks||[];
         });
         client.count(table,json['where'],function (re) {
-            json['total']=re;
+            json['total'] = re;
             req.body.callback?res.send(req.body.callback+"("+JSON.stringify(json)+")"):res.send(json);
         });
     });
 });
 //条件查询所有
 router.post('/select', function(req, res, next) {
-    var json=Object.assign({ sort:{id:1},where:{} },req.body);
+    var json = Object.assign({ sort:{id:1},where:{} },req.body);
     client.selectAll(table,json,function(result){
         Schedule.checkTasks(result,function (tasks) {
-            json['data']=tasks||[];
+            json['data'] = tasks||[];
         });
         client.count(table,json['where'],function (re) {
-            json['total']=re;
+            json['total'] = re;
             req.body.callback?res.send(req.body.callback+"("+JSON.stringify(json)+")"):res.send(json);
         });
     });
 });
 //统计
 router.post('/count', function(req, res, next) {
-    var json=Object.assign({ where:{} },req.body);
-    client.count(table,json['where'],function (result) {
-        json['data']=result;
+    var json = Object.assign({ where:{} },req.body);
+    client.count(table,json['where'],function (re) {
+        json['data'] = re;
         res.send(json);
     });
 });
 //运行
 router.post('/run', function(req, res, next) {
-    var json=Object.assign({ where:{} },req.body);
-    var jobTable="spider_Job"
+    var json = Object.assign({ where:{} },req.body);
+    var jobTable = "spider_Job"
     client.selectAll(table,json,function(taskResult){
         taskResult.forEach(function (task,index) {
             client.selectAll(jobTable,{where:{taskId:task['id']}},function (jobResult) {
@@ -87,8 +87,8 @@ router.post('/run', function(req, res, next) {
 });
 //运行一次
 router.post('/runOne', function(req, res, next) {
-    var json=Object.assign({ where:{} },req.body);
-    var jobTable="spider_Job";
+    var json = Object.assign({ where:{} },req.body);
+    var jobTable = "spider_Job";
     client.selectAll(table,json,function(taskResult){
         taskResult.forEach(function (task,index) {
             client.selectAll(jobTable,{where:{taskId:task['id']}},function (jobResult) {
@@ -103,7 +103,7 @@ router.post('/runOne', function(req, res, next) {
 });
 //停止
 router.post('/stop', function(req, res, next) {
-    var json=Object.assign({ where:{} },req.body);
+    var json = Object.assign({ where:{} },req.body);
     client.selectAll(table,json,function(result){
         result.forEach(function (task,index) {
             Schedule.stop(task,function (succeed) {
@@ -114,5 +114,3 @@ router.post('/stop', function(req, res, next) {
 });
 
 module.exports = router;
-
-

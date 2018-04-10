@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TaskManager By Febby315</title>
+    <!-- CDN bootcdn -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/purl/2.3.1/purl.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.20.1/moment.min.js"></script>
+    <link href="https://cdn.bootcss.com/datatables/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/datatables/1.10.16/js/jquery.dataTables.min.js"></script>
+    <!-- local lib -->
+    <!-- <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/purl/purl.min.js"></script>
+    <script src="/lib/moment.js/moment.min.js"></script>
+    <link href="/lib/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="/lib/datatables/js/jquery.dataTables.min.js"></script> -->
+    <!-- CDN not found -->
+    <link href="/lib/layui/css/layui.css" rel="stylesheet">
+    <script src="/lib/layui/layui.js"></script>
+    <script src="/lib/artTemplate/template-web.js"></script>
+    <!-- DIY -->
+    <link href="/css/task.css" rel="stylesheet">
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo"><img src="/favicon.ico" style="height:75%;" />任务管理器</div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a>
+                        <img id="headimg" class="layui-nav-img" src="http://q4.qlogo.cn/g?b=qq&nk=564822672&s=240">Febby315
+                        <span class="layui-nav-more"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;">修改信息</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">安全管理</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">退出</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-side layui-bg-black">
+            <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
+                <li class="layui-nav-item layui-nav-tree layui-nav-itemed">
+                    <a href="javascript:;" style="font-size:1.2em;">
+                        <i class="layui-icon">&#xe68e;</i>基础服务</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="/task.html"><i class="layui-icon">&#xe638;</i>任务管理</a>
+                        </dd>
+                        <dd>
+                            <a href="/job.html"><i class="layui-icon">&#xe705;</i>作业管理</a>
+                        </dd>
+                        <dd>
+                            <a href="/log.html"><i class="layui-icon">&#xe63c;</i>日志管理</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-nav-tree">
+                    <a href="javascript:;" style="font-size:1.2em;">
+                        <i class="layui-icon">&#xe606;</i>关于我们</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="">关于项目</a>
+                        </dd>
+                        <dd>
+                            <a href="">关于作者</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" style="font-size:1.2em;"><i class="layui-icon">&#xe620;</i>系统配置</a>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-body" style="padding:15px;">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>任务管理</legend>
+            </fieldset>
+            <div>
+                <div id="btn">
+                    <div class="layui-btn-group">
+                        <button class="layui-btn layui-btn-sm layui-btn-disabled" data-type="getCheckData"><i class="layui-icon">&#xe652;</i>运行</button>
+                        <button class="layui-btn layui-btn-sm layui-btn-disabled" data-type="getCheckLength"><i class="layui-icon">&#xe651;</i>停止</button>
+                        <button class="layui-btn layui-btn-sm layui-btn-disabled" data-type="getCheckLength"><i class="layui-icon">&#xe623;</i>一次</button>
+                    </div>
+                    <div class="layui-btn-group">
+                        <button class="layui-btn layui-btn-sm" data-type="ins"><i class="layui-icon">&#xe61f;</i>新增</button>
+                        <button class="layui-btn layui-btn-sm" data-type="delBySel"><i class="layui-icon">&#xe640;</i>删除</button>
+                    </div>
+                </div>
+                <hr class="layui-bg-red">
+                <!-- 表格 -->
+                <table id="list" class="layui-table" style="width:100%;" lay-size="sm"></table>
+                <!-- 分页 -->
+                <div id="list_page" style="text-align:center;"></div>
+                <!-- 新增任务 -->
+                <script id="task_add" type="text/html">
+                    <div style="padding:15px;">
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>新增任务</legend>
+                        </fieldset>
+                        <form class="layui-form layui-form-pane" action="/api/api_task/insert" method="POST">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">任务名称</label>
+                                <div class="layui-input-block">
+                                    <input name="taskName" class="layui-input" placeholder="请输入任务名称" value="{{taskName}}" >
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">CRON表达式</label>
+                                <div class="layui-input-block">
+                                    <input name="cron" class="layui-input" placeholder="请输入CRON表达式" value="{{cron}}" >
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">备注</label>
+                                <div class="layui-input-block">
+                                    <textarea name="remark" class="layui-textarea" placeholder="请输入备注说明">{{remark}}</textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit="" lay-filter="task_add">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </script>
+                <!-- 修改任务 -->
+                <script id="task_edit" type="text/html">
+                    <div style="padding:15px;">
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>编辑任务 {{taskName}}</legend>
+                        </fieldset>
+                        <form class="layui-form layui-form-pane" action="/api/api_task/update" method="POST">
+                            <input name="_id" type="hidden" class="layui-input" value="{{_id}}" >
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">任务ID</label>
+                                <div class="layui-input-block">
+                                    <input name="id" class="layui-input" value="{{id}}" disabled >
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">任务名称</label>
+                                <div class="layui-input-block">
+                                    <input name="taskName" class="layui-input" placeholder="请输入任务名称" value="{{taskName}}" >
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">CRON表达式</label>
+                                <div class="layui-input-block">
+                                    <input name="cron" class="layui-input" placeholder="请输入CRON表达式" value="{{cron}}" >
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">备注</label>
+                                <div class="layui-input-block">
+                                    <textarea name="remark" class="layui-textarea" placeholder="请输入备注说明">{{remark}}</textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit="" lay-filter="task_edit">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </script>
+            </div>
+        </div>
+        <div class="layui-footer">
+            <div>TaskManager By Febby315</div>
+        </div>
+    </div>
+    <script src="/js/task.js"></script>
+</body>
+
+</html>

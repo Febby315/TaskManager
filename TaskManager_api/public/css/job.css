@@ -1,0 +1,26 @@
+html,body,#body{ width:100%; height: 100%; }
+table { table-layout:fixed; }
+.text-ellipsis{overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+td,th{ overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.center{text-align: center;}
+/* .w14{ width:14px; } */
+.w40{ width:40px; }
+.w60{ width:120px; }
+
+.layout-logo{
+    display: block;
+    width: 100px;
+    height: 34px;
+    background: #5b6270;
+    border-radius: 5px;
+    position: relative;
+    float: left;
+    top: 15px;
+}
+.layout-nav{
+    font-size: 2rem;
+    color: #f5f7f9;
+    position: relative;
+    float: left;
+    left: 20px;
+}

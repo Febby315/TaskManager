@@ -13,28 +13,26 @@ function init_db(callback){
 function resultCheck(err,result,callback){
     err?console.error(err):callback(result);
 }
+//数据库操作接口
 var service=function(){
     self=this;
     this.insert=function(table,data,callback){
         init_db(function (db) {
-            var collection = db.collection(table);
-            collection.insert(data,function (err,result){
+            db.collection(table).insert(data,function (err,result){
                 resultCheck(err,result,callback)
             });
         });
     }
-    this.delete=function(table,whereStr,callback){
+    this.delete=function(table,where,callback){
         init_db(function (db) {
-            var collection = db.collection(table);
-            collection.remove(whereStr,function (err,result){
+            db.collection(table).remove(where,function (err,result){
                 resultCheck(err,result,callback)
             });
         });
     }
-    this.update=function(table,whereStr,updateStr,callback){
+    this.update=function(table,where,updateStr,callback){
         init_db(function (db) {
-            var collection = db.collection(table);
-            collection.update(whereStr,updateStr,function (err,result){
+            db.collection(table).update(where,updateStr,function (err,result){
                 resultCheck(err,result,callback)
             });
         });
@@ -44,8 +42,7 @@ var service=function(){
         var page=parseInt(json.page,10);
         var size=parseInt(json.size,10);
         init_db(function (db) {
-            var collection = db.collection(table);
-            collection.find(json.where).sort(json.sort).skip((page-1)*size).limit(size).toArray(function (err,result){
+            db.collection(table).find(json.where).sort(json.sort).skip((page-1)*size).limit(size).toArray(function (err,result){
                 resultCheck(err,result,callback);
             });
         });
@@ -53,8 +50,7 @@ var service=function(){
     //查询所有
     this.selectAll=function(table,json,callback){
         init_db(function (db) {
-            var collection = db.collection(table);
-            collection.find(json.where).sort(json.sort).toArray(function (err,result){
+            db.collection(table).find(json.where).sort(json.sort).toArray(function (err,result){
                 resultCheck(err,result,callback);
             });
         });
@@ -62,8 +58,7 @@ var service=function(){
     //统计
     this.count=function(table,where,callback){
         init_db(function (db) {
-            var collection = db.collection(table);
-            collection.count(where,function (err,result){
+            db.collection(table).count(where,function (err,result){
                 resultCheck(err,result,callback);
             });
         });
