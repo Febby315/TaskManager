@@ -8,7 +8,7 @@ const table="spider_log";
 //任务调度执行日志接口API
 //增加日志
 router.post('/insert', function(req, res, next) {
-    var data = req.body;
+    let data = req.body;
     data.id = uuid.v1();
     client.insert(table,data,function(result){
         res.send(result);
@@ -16,7 +16,7 @@ router.post('/insert', function(req, res, next) {
 });
 //查询日志
 router.post('/select', function(req, res, next) {
-    var whereStr = req.body;
+    let whereStr = req.body;
     client.select(table,whereStr,function(result){
         res.send(result);
     });

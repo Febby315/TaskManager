@@ -4,7 +4,7 @@ const spawn = require('child_process').spawn;
 const df="YYYY-MM-DD HH:mm:ss.SSS";
 
 
-var service={};
+let service={};
 service.map={};
 //开始运行
 service.start=function(task,callback) {
@@ -15,9 +15,9 @@ service.start=function(task,callback) {
 };
 //停止运行
 service.stop=function(task,callback){
-    var succeed=false;
+    let succeed=false;
     if(service.map[task.id]){
-        succeed=service.map[task.id].cancel();
+        succeed = service.map[task.id].cancel();
         delete service.map[task.id];
     }
     console.log("%s Task Stop-->>%s(%s)-->%s",moment().format(df),task.taskName,task.id,succeed?"SUCCESSS":"FAIL");
@@ -36,10 +36,10 @@ service.isRun=function(task){
 }
 //运行作业
 service.runJob=function(job,callback){
-    var command=job['command'];
-    var params=JSON.parse(job['params']||{});
-    var startDate=new Date();
-    var ls = spawn(command,params);
+    let command=job['command'];
+    let params=JSON.parse(job['params']||{});
+    let startDate=new Date();
+    let ls = spawn(command,params);
     console.log("%s [%s]Job Running-->%s\t%s %s",moment().format(df),ls.pid,job['jobName'],job['command'],params.join(" "));
     ls.stdout.on('data', function(msg){
         console.log("%s [%s]Job Stdout-->%s",moment().format(df),ls.pid,job['jobName'],msg.toString());

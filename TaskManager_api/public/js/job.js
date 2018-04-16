@@ -5,39 +5,6 @@ var v_job=new Vue({
         total:10, page:1, pageSize:5,
         addView:false, editView:false,
         form:{},
-        columns:[
-            { type: 'selection', width: 52, align: 'center', title:"操作", fixed: 'left' },
-            // { key:"_id", title:"ObjectId" },
-            { key:"id", title:"ID", ellipsis:true },
-            { key:"jobName", title:"作业名称", ellipsis:true },
-            { key:"command", title:"命令", ellipsis:true },
-            { key:"params", title:"参数", ellipsis:true },
-            { key:"taskId", title:"任务ID", ellipsis:true },
-            { key:"remark", title:"备注", ellipsis:true },
-            { type:"action", width:120, align: 'center', title:"操作", fixed:"right",
-                render:function(h, params){
-                    return h('div', [
-                        h('Button', {
-                            props: { type: 'primary', size: 'small' },
-                            style: { marginRight: '5px' },
-                            on: {
-                                click: () => {
-                                    this.update(params.index)
-                                }
-                            }
-                        }, '修改'),
-                        h('Button', {
-                            props: { type: 'error', size: 'small' },
-                            on: {
-                                click: ()=> {
-                                    this.remove(params.index)
-                                }
-                            }
-                        }, '删除')
-                    ]);
-                }
-            }
-        ],
         list:[],
         taskList:[]
     },

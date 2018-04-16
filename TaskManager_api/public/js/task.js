@@ -144,7 +144,7 @@ function initList(data){
 }
 //加载表格数据
 function loadTask(page){
-    page = task.page = $.extend({ curr: 1,limit: 2 },page);
+    page = task.page = $.extend({ curr: 1,limit: 10 },page);
     //请求数据
     sendComm("POST","/api/api_task/selectByPage",{ page:page.curr,size:page.limit },function(result){
         //表格数据重载
@@ -155,7 +155,7 @@ function loadTask(page){
             curr: result.page||page.curr,
             limit: result.size||page.limit,
             count: result.total,
-            // limits:[5,10,20,40],
+            limits:[5,10,15,20],
             layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'],
             theme: '#1E9FFF',
             jump:function(p,isFirst){
@@ -166,7 +166,7 @@ function loadTask(page){
 }
 //ajax请求
 function sendComm(method,url,data,callback){
-    var errcb = function(){ layer.msg('数据请求失败。。。',{time: 2000, icon:5}); }
+    var errcb = function(){ layer.msg('数据请求失败。。。',{time: 1500, icon:5}); }
     $.ajax({ type: method, url: url, data: JSON.stringify(data), contentType: "application/json", success: callback,error: errcb });
 }
 //入口

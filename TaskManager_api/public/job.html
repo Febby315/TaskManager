@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>job - TaskManager V2.0</title>
     <!-- CDN bootcdn -->
-    <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
     <link href="https://cdn.bootcss.com/iview/2.11.0/styles/iview.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/iview/2.11.0/iview.min.js"></script>
+    <script src="https://cdn.bootcss.com/iview/2.11.0/iview.min.js"></script> -->
     <!-- local lib -->
-    <!-- <script src="/lib/vue/vue.min.js"></script>
+    <script src="/lib/vue/vue.min.js"></script>
     <script src="/lib/axios/axios.min.js"></script>
     <link href="/lib/iview/styles/iview.css" rel="stylesheet">
-    <script src="/lib/iview/iview.min.js"></script> -->
+    <script src="/lib/iview/iview.min.js"></script>
     <!-- DIY -->
     <link href="/css/job.css" rel="stylesheet">
 </head>
@@ -116,7 +116,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <!-- <i-table :columns="columns" :data="list"></i-table> -->
                         <page :total="total" :page-size="pageSize" size="small" :page-size-opts="[5,10,15,20]" @on-change="pageChange" @on-page-size-change="pageSizeChange" show-elevator show-sizer :style="{padding:'1rem 0'}"></page>
                     </i-content>
                 </layout>
