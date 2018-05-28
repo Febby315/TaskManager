@@ -9,7 +9,7 @@ const Client = require('../service/service_client');
 const Schedule = require('../service/service_schedule');
 const client = new Client();
 const table = 'spider_task';
-const jobTable = "spider_Job";
+const jobTable = "spider_job";
 
 //增加
 router.post('/insert', function(req, res, next) {
@@ -37,6 +37,7 @@ router.post('/update',function(req, res, next) {
 //分页查询
 router.all('/selectByPage', function(req, res, next) {
     let json = Object.assign({ sort:{id:1},page:1,size:10,where:{} },req.body);
+    console.log(req.body,json)
     client.selectByPage(table,json,function(result){
         Schedule.checkTasks(result,function (tasks) {
             json['data'] = tasks||[];
@@ -127,6 +128,5 @@ router.post('/stop', function(req, res, next) {
 //         });
 //     });
 // })();
-
 
 module.exports = router;
