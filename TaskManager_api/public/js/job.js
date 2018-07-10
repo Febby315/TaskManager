@@ -14,7 +14,7 @@ var v_job=new Vue({
         });
     },
     methods:{
-        //新增
+        // 新增
         insert:function(){
             _this=this;
             axios.post("/api/api_job/insert",_this.form).then(function(res){
@@ -25,7 +25,7 @@ var v_job=new Vue({
                 _this.$Message.error(err.message);
             });
         },
-        //删除
+        // 删除
         delete:function(item){
             _this=this;
             axios.post("/api/api_job/delete",{ id:item.id }).then(function(res){
@@ -34,7 +34,7 @@ var v_job=new Vue({
                 _this.$Message.error(err.message);
             });
         },
-        //更新
+        // 更新
         update:function(){
             console.log(_this.form)
             _this=this;
@@ -45,7 +45,7 @@ var v_job=new Vue({
                 _this.$Message.error(err.message);
             });
         },
-        //加载数据
+        // 加载数据
         loadList:function(){
             _this = this;
             _this.checkedAll = false;
@@ -56,7 +56,7 @@ var v_job=new Vue({
                 _this.$Message.error(err.message);
             });
         },
-        //增加
+        // 增加
         add:function(){
             _this = this;
             _this.form = {};
@@ -67,7 +67,7 @@ var v_job=new Vue({
                 _this.$Message.error(err.message);
             });
         },
-        //移除
+        // 移除
         remove:function(item){
             _this = this;
             _this.list.indexOf(item)>=0 ? _this.delete(item) : _this.list.forEach(function(item,i){
@@ -75,7 +75,7 @@ var v_job=new Vue({
             });
             _this.loadList();
         },
-        //修改
+        // 修改
         modify:function(item){
             _this = this;
             _this.form = JSON.parse(JSON.stringify(item));
@@ -86,17 +86,17 @@ var v_job=new Vue({
                 _this.$Message.error(err.message);
             });
         },
-        //分页改变
+        // 分页改变
         pageChange:function(page){
             this.page = page;
             this.loadList();
         },
-        //分页大小改变
+        // 分页大小改变
         pageSizeChange:function(size){
             this.pageSize = size;
             this.loadList();
         },
-        //选择
+        // 选择
         onCheck:function(curr){
             _this = this;
             _this.checkedAll = true;
@@ -105,7 +105,7 @@ var v_job=new Vue({
                 _this.checkedAll = _this.checkedAll&&item.checked;
             });
         },
-        //全选
+        // 全选
         checkAll:function(){
             _this = this;
             _this.checkedAll = !_this.checkedAll

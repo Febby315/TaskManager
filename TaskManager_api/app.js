@@ -22,8 +22,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-//API //响应={ 状态:statu, 消息:masssage, 数据:data }
+// 解决跨域问题
+app.all('/test', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, POST');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+// API //响应={ 状态:statu, 消息:masssage, 数据:data }
 app.use('/api/api_job',apiJob);
 app.use('/api/api_task',apiTask);
 app.use('/api/api_log',apiLog);

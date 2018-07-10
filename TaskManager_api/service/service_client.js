@@ -13,27 +13,31 @@ function init_db(callback){
 function resultCheck(err,result,callback){
     err?console.error(err):callback(result);
 }
+
 //数据库操作接口
 let service=function(){
     self = this;
+    //新增
     self.insert=function(table,data,callback){
         init_db(function (db) {
             db.collection(table).insert(data,function (err,result){
-                resultCheck(err,result,callback)
+                resultCheck(err,result,callback);
             });
         });
     }
+    //删除
     self.delete=function(table,where,callback){
         init_db(function (db) {
             db.collection(table).remove(where,function (err,result){
-                resultCheck(err,result,callback)
+                resultCheck(err,result,callback);
             });
         });
     }
+    //更新
     self.update=function(table,where,updateStr,callback){
         init_db(function (db) {
             db.collection(table).update(where,updateStr,function (err,result){
-                resultCheck(err,result,callback)
+                resultCheck(err,result,callback);
             });
         });
     }

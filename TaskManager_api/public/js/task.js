@@ -1,13 +1,15 @@
-//定义任务
+// 定义任务
 function Task(){
     let self=this;
     self.data={};
+    // 运行
     self.run = function(d){
         sendComm("POST","/api/api_task/run",{ where:{ id: d.id } },function(re){
             let title=`运行`,content=`运行任务(${d.id})命令发送成功<br>${ JSON.stringify(re) }`;
             layer.open({ title:title, content:content, end:loadTask(task.page) });
         });
     };
+    // 停止
     self.stop = function(d){
         layer.confirm('确认停止运行？', function(index){
             layer.close(index);
@@ -17,12 +19,14 @@ function Task(){
             });
         });
     };
+    // 运行一次
     self.runOnce = function(d){
         sendComm("POST","/api/api_task/runOne",{ where:{ id: d.id } },function(re){
             let title=`运行一次`,content=`运行一次(${d.id})命令发送成功<br>${ JSON.stringify(re) }`;
             layer.open({ title:title, content:content });
         });
     };
+    // 新增
     self.ins = function(d){
         let idx=layer.open({
             type: 1,
@@ -42,6 +46,7 @@ function Task(){
             return false;
         });
     };
+    // 更新
     self.upd = function(d){
         let idx=layer.open({
             type: 1,
@@ -61,6 +66,7 @@ function Task(){
             return false;
         });
     };
+    // 删除
     self.del = function(d){
         layer.confirm('真的删除行么？', function(index){
             layer.close(index);
@@ -75,6 +81,7 @@ function Task(){
 //初始化表格
 function initList(data){
     var task = window.task = new Task();
+    // 初始化表格
     var option = task.option = {
         info: false,
         paging:false,
@@ -112,21 +119,14 @@ function initList(data){
         ]
     };
     var table = task.table = $('#list').DataTable(option);
-    //全选框单击事件
+    // 全选框单击事件
     $("#selectAll").on("click",function(){
         $("input:checkbox").prop("checked",$(this).prop("checked"));
     });
-    //操作按钮事件
+    // 操作按钮事件
     task.table.on("click","button",function(e){
         let data = task.data = task.table.row($(this).parents("tr")).data();
-        switch($(this).data("type")){
-            case 'run': task.run(data);break;           //运行
-            case 'stop': task.stop(data);break;         //停止
-            case 'runOnce': task.runOnce(data);break;   //运行一次
-            case 'upd': task.upd(data);break;           //修改
-            case 'del': task.del(data);break;       //删除
-            default: break;
-        }
+        task[$(this).data("type")]?task[$(this).data("type")](data):console.error("未找到相关操作");
     });
     //顶部按钮事件
     $("#btn button").on("click",function(){
@@ -138,7 +138,7 @@ function initList(data){
             case 'stopN': break;     //停止已选
             case 'runOnceN': break; //运行一次
             case 'delN': break;       //删除已选
-            default:break;
+            default: console.error("未找到相关操作"); break;
         }
     });
 }
@@ -175,5 +175,5 @@ $(document).ready(function(){
         initList();
         //console.log($.url().data.param.query);
         loadTask({ curr:$.url().param("curr"),limit:$.url().param("limit") });
-    })
+    });
 });

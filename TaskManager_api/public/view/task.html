@@ -28,7 +28,7 @@
 <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
-            <div class="layui-logo"><img src="/favicon.ico" style="height:75%;" />任务管理器</div>
+            <div class="layui-logo"><img src="/favicon.ico" style="height:75%;" />任务管理器 of layui</div>
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a>
@@ -56,13 +56,13 @@
                         <i class="layui-icon">&#xe68e;</i>基础服务</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="/task.html"><i class="layui-icon">&#xe638;</i>任务管理</a>
+                            <a href="/view/task.html"><i class="layui-icon">&#xe638;</i>任务管理</a>
                         </dd>
                         <dd>
-                            <a href="/job.html"><i class="layui-icon">&#xe705;</i>作业管理</a>
+                            <a href="/view/job.html"><i class="layui-icon">&#xe705;</i>作业管理</a>
                         </dd>
                         <dd>
-                            <a href="/log.html"><i class="layui-icon">&#xe63c;</i>日志管理</a>
+                            <a href="/view/log.html"><i class="layui-icon">&#xe63c;</i>日志管理</a>
                         </dd>
                     </dl>
                 </li>
@@ -88,6 +88,7 @@
                 <legend>任务管理</legend>
             </fieldset>
             <div>
+                <!-- 顶部按钮 -->
                 <div id="btn">
                     <div class="layui-btn-group">
                         <button class="layui-btn layui-btn-sm layui-btn-disabled" data-type="getCheckData"><i class="layui-icon">&#xe652;</i>运行</button>
@@ -182,7 +183,7 @@
             </div>
         </div>
         <div class="layui-footer">
-            <div>TaskManager By Febby315</div>
+            <div>基于jquery+layui+artTemplate技术实现</div>
         </div>
     </div>
     <script src="/js/task.js"></script>
