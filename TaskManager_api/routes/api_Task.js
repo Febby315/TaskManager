@@ -37,7 +37,6 @@ router.post('/update',function(req, res, next) {
 //分页查询
 router.all('/selectByPage', function(req, res, next) {
     let json = Object.assign({ sort:{id:1},page:1,size:10,where:{} },req.body);
-    console.log(req.body,json)
     client.selectByPage(table,json,function(result){
         Schedule.checkTasks(result,function (tasks) {
             json['data'] = tasks||[];
