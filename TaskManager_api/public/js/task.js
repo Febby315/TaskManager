@@ -1,7 +1,7 @@
-// 定义任务
+// 定义任务类及操作
 function Task(){
-    let self=this;
-    self.data={};
+    let self = this;
+    self.data = {};
     // 运行
     self.run = function(d){
         sendComm("POST","/api/api_task/run",{ where:{ id: d.id } },function(re){
@@ -91,9 +91,7 @@ function initList(data){
             {
                 data:'_id', 
                 title:'<input id="selectAll" type="checkbox"/>全选',
-                orderable:false,
-                className:'col-center',
-                width:50,
+                orderable:false, className:'col-center', width:50,
                 render:function(d, t, r, m){ return `<input type="checkbox" value="${d}"/>`; }
             },
             { data:'id', title:'ID', className:'col-center', width:240 },
@@ -119,19 +117,25 @@ function initList(data){
         ]
     };
     var table = task.table = $('#list').DataTable(option);
-    // 全选框单击事件
-    $("#selectAll").on("click",function(){
-        $("input:checkbox").prop("checked",$(this).prop("checked"));
+    table.on("click","button",function(e){
+        let data = task.table.row($(this).parents("tr")).data();
+        task[$(this).data("type")] ? task[$(this).data("type")](data) : console.error("未找到相关操作");
     });
-    // 操作按钮事件
-    task.table.on("click","button",function(e){
-        let data = task.data = task.table.row($(this).parents("tr")).data();
-        task[$(this).data("type")]?task[$(this).data("type")](data):console.error("未找到相关操作");
+     //表格绘制完成事件
+     table.on("draw",function(e){
+        // 表格内具有value属性的单选框单击事件
+         $("input:checkbox[value]").on("change",function(e){
+             console.log($("input:checked[value]").length , $("input:checkbox[value]").length);
+             $("#selectAll").prop("checked", $("input:checked[value]").length >= $("input:checkbox[value]").length);
+         });
+     });
+    // 全选框单击事件
+    $("#selectAll").on("click",function(e){
+        $("input:checkbox").prop("checked",$(this).prop("checked"));
     });
     //顶部按钮事件
     $("#btn button").on("click",function(){
         let data = task.table.rows($("#list input:checked").parents("tr")).data().toArray();
-        console.log(data);
         switch($(this).data("type")){
             case 'ins': task.ins({});break;       //新增
             case 'runN': break;       //运行已选
@@ -144,7 +148,7 @@ function initList(data){
 }
 //加载表格数据
 function loadTask(page){
-    page = task.page = $.extend({ curr: 1,limit: 10 },page);
+    task.page = page = $.extend({ curr: 1,limit: 10 },page);
     //请求数据
     sendComm("POST","/api/api_task/selectByPage",{ page:page.curr,size:page.limit },function(result){
         //表格数据重载
@@ -173,7 +177,7 @@ function sendComm(method,url,data,callback){
 $(document).ready(function(){
     layui.use(["layer","laypage","laytpl","form"],function(){
         initList();
-        //console.log($.url().data.param.query);
+        //console.log($.url().data.param.query); //来自url的参数
         loadTask({ curr:$.url().param("curr"),limit:$.url().param("limit") });
     });
 });

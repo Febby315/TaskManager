@@ -18,7 +18,6 @@ var v_job=new Vue({
         insert:function(){
             _this=this;
             axios.post("/api/api_job/insert",_this.form).then(function(res){
-                console.log(res.data);
                 res && res.data && res.data.result && res.data.result.n==res.data.result.ok ? _this.$Message.success("数据新增成功") : _this.$Message.error("数据新增失败");
                 _this.loadList();
             }).catch(function (err) {
@@ -36,7 +35,6 @@ var v_job=new Vue({
         },
         // 更新
         update:function(){
-            console.log(_this.form)
             _this=this;
             axios.post("/api/api_job/update",_this.form).then(function(res){
                 res && res.data && res.data.n==res.data.ok ? _this.$Message.success("记录更新成功") : _this.$Message.error("记录更新失败");
