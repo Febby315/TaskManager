@@ -1,0 +1,29 @@
+{ 
+    "_id" : ObjectId("5a4ed8a474c6e1838abe7892"), 
+    "taskName" : "第1步", 
+    "cron" : "0 0 0/12 * * *", 
+    "remark" : "列表模板解析\n每天00:00、12:00各一次", 
+    "id" : "0f9e1980-f1ba-11e7-8361-b5c3f9f862d6"
+}
+{ 
+    "_id" : ObjectId("5a4edb6c74c6e1838abe7893"), 
+    "taskName" : "第2,4步", 
+    "cron" : "0 0 */3 * * *", 
+    "remark" : "列表页抓取，详情页抓取\n每隔3分钟执行一次", 
+    "id" : "b7add290-f1bb-11e7-8361-b5c3f9f862d6"
+}
+{ 
+    "_id" : ObjectId("5a4edd3674c6e1838abe7894"), 
+    "taskName" : "第3,5,6,7,8,9步", 
+    "cron" : "0 */3 * * * *", 
+    "remark" : "列表清洗，内容清洗，附件下载，附件清洗，数据提纯，标签抽注\n每3分钟执行一次", 
+    "id" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6"
+}
+{ 
+    "_id" : ObjectId("5acb34d7e7724e3108fea528"), 
+    "taskName" : "资源管理器", 
+    "cron" : "0 * * * * *", 
+    "remark" : "打开资源资源管理器\n每1钟执行一次", 
+    "id" : "e9e79350-3bd9-11e8-81fa-7db61fe5ead2", 
+    "autorun" : "1"
+}
