@@ -1,125 +1,113 @@
-{ 
-    "_id" : ObjectId("5a4edf0174c6e1838abe7896"), 
-    "jobName" : "第2步", 
-    "command" : "node.exe", 
-    "id" : "2a754180-f1bd-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "b7add290-f1bb-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S2:列表页抓取", 
-    "params" : "[\"D:/wm_spider/spider/2_spider_pick_list/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4edf9d74c6e1838abe7898"), 
-    "jobName" : "第3步", 
-    "command" : "node.exe", 
-    "id" : "304134f0-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S3:列表解析清洗", 
-    "params" : "[\"D:/wm_spider/spider/3_spider_clean_list/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4edffc74c6e1838abe7899"), 
-    "jobName" : "第3步(单页)", 
-    "command" : "node.exe", 
-    "id" : "315a8430-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S3:单列表解析清洗", 
-    "params" : "[\"D:/wm_spider/spider/3_spider_clean_single_detail/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee01474c6e1838abe789a"), 
-    "jobName" : "第4步", 
-    "command" : "node.exe", 
-    "id" : "4040ddb0-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "b7add290-f1bb-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S4:详情页抓取", 
-    "params" : "[\"D:/wm_spider/spider/4_spider_pick_detail/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee02174c6e1838abe789b"), 
-    "jobName" : "第5步", 
-    "command" : "node.exe", 
-    "id" : "504e5410-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S5:详情解析清洗", 
-    "params" : "[\"D:/wm_spider/spider/5_spider_clean_detail/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee02d74c6e1838abe789c"), 
-    "jobName" : "第6步", 
-    "command" : "node.exe", 
-    "id" : "601a70d0-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S6:附件下载", 
-    "params" : "[\"D:/wm_spider/spider/6_spider_img_download/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee03d74c6e1838abe789d"), 
-    "jobName" : "第7步", 
-    "command" : "node.exe", 
-    "id" : "70cae8d0-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S7:附件清洗", 
-    "params" : "[\"D:/wm_spider/spider/7_spider_clean_img/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee04674c6e1838abe789e"), 
-    "jobName" : "第8步(文章)", 
-    "command" : "node.exe", 
-    "id" : "80647900-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S8:数据提纯(文章)", 
-    "params" : "[\"D:/wm_spider/spider/8_spider_article/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee05874c6e1838abe789f"), 
-    "jobName" : "第8步(供应)", 
-    "command" : "node.exe", 
-    "id" : "81aa7a40-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S8:数据提纯(供应)", 
-    "params" : "[\"D:/wm_spider/spider/8_spider_sell/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee2b8bf50c27fe4b47945"), 
-    "jobName" : "第8步(求购)", 
-    "command" : "node.exe", 
-    "id" : "82aa7a40-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S8:数据提纯(求购)", 
-    "params" : "[\"D:/wm_spider/spider/8_spider_buy/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee2bbbf50c27fe4b4794b"), 
-    "jobName" : "第8步(招聘)", 
-    "command" : "node.exe", 
-    "id" : "83aa7a40-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S8:数据提纯(招聘)", 
-    "params" : "[\"D:/wm_spider/spider/8_spider_recruit/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4ee2d2bf50c27fe4b47954"), 
-    "jobName" : "第9步", 
-    "command" : "node.exe", 
-    "id" : "90aa7a40-f1be-11e7-8361-b5c3f9f862d6", 
-    "taskId" : "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6", 
-    "remark" : "S9:标签抽注", 
-    "params" : "[\"D:/wm_spider/spider/9_spider_article_tag/spider_start.js\"]"
-}
-{ 
-    "_id" : ObjectId("5a4edeea74c6e1838abe7895"), 
-    "jobName" : "第1步", 
-    "taskId" : "0f9e1980-f1ba-11e7-8361-b5c3f9f862d6", 
-    "command" : "node.exe", 
-    "params" : "[\"D:/wm_spider/spider/1_spider_start/spider_start.js\"]", 
-    "remark" : "S1:列表模板解析", 
-    "id" : "1cef7e90-f1bd-11e7-8361-b5c3f9f862d6"
-}
-{ 
-    "_id" : ObjectId("5b4464fcbc8aec2674149f55"), 
-    "jobName" : "打开资源管理器", 
-    "taskId" : "e9e79350-3bd9-11e8-81fa-7db61fe5ead2", 
-    "command" : "explorer.exe", 
-    "params" : "[]", 
-    "id" : "8b6c37b0-0cb1-11e8-a604-b7c471140dfe"
-}
+[
+    {
+        "jobName": "第2步",
+        "command": "node.exe",
+        "id": "2a754180-f1bd-11e7-8361-b5c3f9f862d6",
+        "taskId": "b7add290-f1bb-11e7-8361-b5c3f9f862d6",
+        "remark": "S2:列表页抓取",
+        "params": "[\"D:/wm_spider/spider/2_spider_pick_list/spider_start.js\"]"
+    },
+    {
+        "jobName": "第3步",
+        "command": "node.exe",
+        "id": "304134f0-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S3:列表解析清洗",
+        "params": "[\"D:/wm_spider/spider/3_spider_clean_list/spider_start.js\"]"
+    },
+    {
+        "jobName": "第3步(单页)",
+        "command": "node.exe",
+        "id": "315a8430-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S3:单列表解析清洗",
+        "params": "[\"D:/wm_spider/spider/3_spider_clean_single_detail/spider_start.js\"]"
+    },
+    {
+        "jobName": "第4步",
+        "command": "node.exe",
+        "id": "4040ddb0-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "b7add290-f1bb-11e7-8361-b5c3f9f862d6",
+        "remark": "S4:详情页抓取",
+        "params": "[\"D:/wm_spider/spider/4_spider_pick_detail/spider_start.js\"]"
+    },
+    {
+        "jobName": "第5步",
+        "command": "node.exe",
+        "id": "504e5410-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S5:详情解析清洗",
+        "params": "[\"D:/wm_spider/spider/5_spider_clean_detail/spider_start.js\"]"
+    },
+    {
+        "jobName": "第6步",
+        "command": "node.exe",
+        "id": "601a70d0-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S6:附件下载",
+        "params": "[\"D:/wm_spider/spider/6_spider_img_download/spider_start.js\"]"
+    },
+    {
+        "jobName": "第7步",
+        "command": "node.exe",
+        "id": "70cae8d0-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S7:附件清洗",
+        "params": "[\"D:/wm_spider/spider/7_spider_clean_img/spider_start.js\"]"
+    },
+    {
+        "jobName": "第8步(文章)",
+        "command": "node.exe",
+        "id": "80647900-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S8:数据提纯(文章)",
+        "params": "[\"D:/wm_spider/spider/8_spider_article/spider_start.js\"]"
+    },
+    {
+        "jobName": "第8步(供应)",
+        "command": "node.exe",
+        "id": "81aa7a40-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S8:数据提纯(供应)",
+        "params": "[\"D:/wm_spider/spider/8_spider_sell/spider_start.js\"]"
+    },
+    {
+        "jobName": "第8步(求购)",
+        "command": "node.exe",
+        "id": "82aa7a40-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S8:数据提纯(求购)",
+        "params": "[\"D:/wm_spider/spider/8_spider_buy/spider_start.js\"]"
+    },
+    {
+        "jobName": "第8步(招聘)",
+        "command": "node.exe",
+        "id": "83aa7a40-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S8:数据提纯(招聘)",
+        "params": "[\"D:/wm_spider/spider/8_spider_recruit/spider_start.js\"]"
+    },
+    {
+        "jobName": "第9步",
+        "command": "node.exe",
+        "id": "90aa7a40-f1be-11e7-8361-b5c3f9f862d6",
+        "taskId": "c8ea3f70-f1bc-11e7-8361-b5c3f9f862d6",
+        "remark": "S9:标签抽注",
+        "params": "[\"D:/wm_spider/spider/9_spider_article_tag/spider_start.js\"]"
+    },
+    {
+        "jobName": "第1步",
+        "taskId": "0f9e1980-f1ba-11e7-8361-b5c3f9f862d6",
+        "command": "node.exe",
+        "params": "[\"D:/wm_spider/spider/1_spider_start/spider_start.js\"]",
+        "remark": "S1:列表模板解析",
+        "id": "1cef7e90-f1bd-11e7-8361-b5c3f9f862d6"
+    },
+    {
+        "jobName": "打开资源管理器",
+        "taskId": "e9e79350-3bd9-11e8-81fa-7db61fe5ead2",
+        "command": "explorer.exe",
+        "params": "[]",
+        "id": "8b6c37b0-0cb1-11e8-a604-b7c471140dfe"
+    }
+]

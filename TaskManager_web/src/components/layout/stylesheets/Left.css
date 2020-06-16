@@ -25,7 +25,7 @@
 
 
 .sider_a {
-  padding-top: 15px;
+  /* padding-top: 15px; */
   width: 100%;
   background: #3e3e3e;
   /*position: absolute;*/
@@ -241,4 +241,9 @@ a {
 
 .ant-menu-dark .ant-menu-item-selected:hover {
   background-color: #494949;
+}
+
+.logo {
+  padding: 16px 8px;
+  font-size: 1.5em;
 }
