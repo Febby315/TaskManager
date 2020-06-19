@@ -1,17 +1,17 @@
 import React from 'react';
-import {Row, Col} from 'antd';
+import { Row, Col } from 'antd';
 import styles from './stylesheets/Layout.css';
 
 import Left from './Left';
 
-function Layout({children, location, menu, submenu}) {
+function Layout({ children, location, menu, submenu }) {
 	return (
 		<div>
 			<Row>
 				<Col span={4}>
-					<Left menu={menu} submenu={submenu}/>
+					<Left menu={menu} submenu={submenu} />
 				</Col>
-				<Col span={20} style={{backgroundColor: "#fff",height: "100vh"}}>
+				<Col span={20} style={{ backgroundColor: "#fff", height: "100vh" }}>
 					<div className={styles.main_container}>
 						{children}
 					</div>

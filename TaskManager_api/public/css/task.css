@@ -1,5 +1,17 @@
-html,body{ height: 100%; width: 100%; margin: 0px; padding: 0px; }
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
 
-i.layui-icon{ font-size:inherit; padding-right:0.4em; }
-.col-center{ text-align: center; }
+i.layui-icon {
+	font-size: inherit;
+	padding-right: 0.4em;
+}
+
+.col-center {
+	text-align: center;
+}
+
 /* #list_filter{ float: left; } */

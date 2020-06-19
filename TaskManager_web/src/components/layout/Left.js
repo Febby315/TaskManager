@@ -2,7 +2,6 @@ import React from 'react';
 import { Menu, Breadcrumb, Icon, message } from 'antd';
 const SubMenu = Menu.SubMenu;
 import { Link } from 'react-router'
-// import logo from '../../../public/images/logoHome.png'
 import styles from './stylesheets/Left.css';
 
 function Left({ children, location, menu, submenu }) {

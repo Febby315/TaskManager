@@ -7,7 +7,7 @@ function Enterprises() {
 	const breadCrumb = "日志管理";
 	return (
 		<Layout location={location} menu={"sub1"} submenu={"sub1_3"}>
-			<Main breadCrumb = {breadCrumb}/>
+			<Main breadCrumb={breadCrumb} />
 		</Layout>
 	);
 }

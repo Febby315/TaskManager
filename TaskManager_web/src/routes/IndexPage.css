@@ -3,22 +3,26 @@
 	font-family: Georgia, sans-serif;
 	text-align: center;
 }
+
 .title {
 	font-size: 2.5rem;
 	font-weight: normal;
 	letter-spacing: -1px;
 }
+
 .welcome {
 	height: 328px;
 	background: url(../../public/images/yay.jpg) no-repeat center 0;
 	background-size: 388px 328px;
 }
+
 .list {
 	margin-top: 1.8em;
 	font-size: 1.2em;
 	list-style: none;
 	line-height: 1.5em;
 }
-.list code{
+
+.list code {
 	background: #ccc;
 }
